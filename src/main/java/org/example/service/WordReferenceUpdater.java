@@ -17,6 +17,8 @@ public class WordReferenceUpdater {
     private static final String PATH_TO_INPUT_FILES = "src/main/resources/input/";
     private static final String PATH_TO_OUTPUT_FILES = "src/main/resources/output/";
     private static final String WORD_FILE_FORMAT = ".docx";
+    private String pathToInputFiles = "src/main/resources/input/";
+    private String pathToOutputFiles = "src/main/resources/output/";
 
     private final String nameScientificWork;
     private final String titleNameBibliography;
@@ -30,6 +32,14 @@ public class WordReferenceUpdater {
 
         this.nameScientificWork = nameScientificWork;
         this.titleNameBibliography = titleNameBibliography;
+    }
+
+    public void setInputPath(String path) {
+        this.pathToInputFiles = path.endsWith("/") ? path : path + "/";
+    }
+
+    public void setOutputPath(String path) {
+        this.pathToOutputFiles = path.endsWith("/") ? path : path + "/";
     }
 
     /**

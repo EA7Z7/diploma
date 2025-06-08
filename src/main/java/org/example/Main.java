@@ -1,15 +1,32 @@
 package org.example;
 
-import org.example.service.WordReferenceUpdater;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.net.URL;
 
-public class Main {
-    private static final String TITLE_NAME_BIBLIOGRAPHY = "СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ";
-    private static final String NAME_SCIENTIFIC_WORK = "Литература";
+public class Main extends Application {
 
-    public static void main(String[] args) throws IOException {
-        WordReferenceUpdater wordReferenceUpdater = new WordReferenceUpdater(NAME_SCIENTIFIC_WORK, TITLE_NAME_BIBLIOGRAPHY);
-        wordReferenceUpdater.sortReferences();
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // Загрузка FXML из ресурсов
+        URL fxmlUrl = getClass().getResource("/main.fxml");
+        FXMLLoader loader = new FXMLLoader(fxmlUrl);
+        Parent root = loader.load();
+
+        // Передача Stage в контроллер
+        MainController controller = loader.getController();
+        controller.setStage(primaryStage);
+
+        primaryStage.setTitle("Document Processor");
+        primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

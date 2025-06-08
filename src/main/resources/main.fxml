@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" spacing="10"
+      fx:controller="org.example.MainController" style="-fx-padding: 20;">
+
+    <Label text="Document Processor" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Input ODT File:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="inputField" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+        <Button text="Browse..." onAction="#browseInput" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+        <Label text="Output Folder:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="outputField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Button text="Browse..." onAction="#browseOutput" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+        <Label text="Bibliography Title:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="titleField" text="Список литературы" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <ProgressBar fx:id="progressBar" progress="0" maxWidth="Infinity"/>
+
+    <TextArea fx:id="logArea" editable="false" wrapText="true" prefRowCount="10"/>
+
+    <HBox spacing="10">
+        <Button text="Convert & Process" onAction="#processDocument" style="-fx-font-weight: bold;"/>
+        <Button text="Clear Log" onAction="#clearLog"/>
+    </HBox>
+</VBox>
